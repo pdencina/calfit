@@ -24,6 +24,7 @@ import GoalsPage      from 'pages/alumno/GoalsPage'
 import MensajesPage   from 'pages/MensajesPage'
 import PlanesPage     from 'pages/PlanesPage'
 import ConfigPage     from 'pages/ConfigPage'
+import AdminPage      from 'pages/profe/AdminPage'
 
 function AppRouter() {
   const { user, profile, loading } = useAuth()
@@ -54,6 +55,7 @@ function AppRouter() {
         case 'metricas':  return <MetricasProfe/>
         case 'progreso':  return <ProgresoPage/>
         case 'planes':    return <PlanesPage/>
+        case 'admin':     return <AdminPage/>
         case 'config':    return <ConfigPage/>
         default:          return <DashboardProfe setPage={setPage}/>
       }

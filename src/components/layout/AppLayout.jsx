@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 const PROFE_NAV = [
   { section: null },
   { key:'dashboard',  icon:'⚡', label:'Dashboard' },
+  { key:'admin',      icon:'🏛', label:'Administración' },
   { key:'alumnos',    icon:'👥', label:'Mis Alumnos' },
   { key:'rutinas',    icon:'📋', label:'Rutinas' },
   { key:'mensajes',   icon:'💬', label:'Mensajes', badge:'unread' },
