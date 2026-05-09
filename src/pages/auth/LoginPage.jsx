@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { signIn, signUp } from '../../lib/supabase'
+import { signIn, signUp } from 'lib/supabase'
 
 export default function LoginPage() {
   const [mode, setMode]       = useState('login')

@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
-import { useAuth } from '../../contexts/AuthContext'
+import { useAuth } from 'contexts/AuthContext'
 import {
   getConversaciones, getOrCreateConversacion,
   getMessages, sendMessage, subscribeToMessages,
   getAlumnos
-} from '../../lib/supabase'
+} from 'lib/supabase'
 
 function MessageBubble({ msg, isMe }) {
   const time = new Date(msg.created_at).toLocaleTimeString('es',{hour:'2-digit',minute:'2-digit'})

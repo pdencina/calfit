@@ -1,29 +1,29 @@
 import './index.css'
 import { useState } from 'react'
-import { AuthProvider, useAuth } from './contexts/AuthContext'
-import AppLayout from './components/layout/AppLayout'
+import { AuthProvider, useAuth } from 'contexts/AuthContext'
+import AppLayout from 'components/layout/AppLayout'
 
 // Auth
-import LoginPage from './pages/auth/LoginPage'
+import LoginPage from 'pages/auth/LoginPage'
 
 // Profe pages
-import DashboardProfe from './pages/profe/DashboardProfe'
-import AlumnosPage    from './pages/profe/AlumnosPage'
-import RutinasPage    from './pages/profe/RutinasPage'
-import MetricasProfe  from './pages/profe/MetricasProfe'
-import ProgresoPage   from './pages/profe/ProgresoPage'
+import DashboardProfe from 'pages/profe/DashboardProfe'
+import AlumnosPage    from 'pages/profe/AlumnosPage'
+import RutinasPage    from 'pages/profe/RutinasPage'
+import MetricasProfe  from 'pages/profe/MetricasProfe'
+import ProgresoPage   from 'pages/profe/ProgresoPage'
 
 // Alumno pages
-import InicioAlumno   from './pages/alumno/InicioAlumno'
-import EntrenarPage   from './pages/alumno/EntrenarPage'
-import MetricasAlumno from './pages/alumno/MetricasAlumno'
-import HistorialPage  from './pages/alumno/HistorialPage'
-import GoalsPage      from './pages/alumno/GoalsPage'
+import InicioAlumno   from 'pages/alumno/InicioAlumno'
+import EntrenarPage   from 'pages/alumno/EntrenarPage'
+import MetricasAlumno from 'pages/alumno/MetricasAlumno'
+import HistorialPage  from 'pages/alumno/HistorialPage'
+import GoalsPage      from 'pages/alumno/GoalsPage'
 
 // Shared
-import MensajesPage   from './pages/MensajesPage'
-import PlanesPage     from './pages/PlanesPage'
-import ConfigPage     from './pages/ConfigPage'
+import MensajesPage   from 'pages/MensajesPage'
+import PlanesPage     from 'pages/PlanesPage'
+import ConfigPage     from 'pages/ConfigPage'
 
 function AppRouter() {
   const { user, profile, loading } = useAuth()

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { useAuth } from '../../contexts/AuthContext'
-import { getAlumnos, addAlumnoToOrg, getMetricasAlumno, getSesionesAlumno, insertMetrica } from '../../lib/supabase'
+import { useAuth } from 'contexts/AuthContext'
+import { getAlumnos, addAlumnoToOrg, getMetricasAlumno, getSesionesAlumno, insertMetrica } from 'lib/supabase'
 import { LineChart, Line, ResponsiveContainer, Tooltip } from 'recharts'
 
 function Sparkline({ data, dataKey, color='#c8f542' }) {

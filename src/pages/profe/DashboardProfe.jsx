@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useAuth } from '../../contexts/AuthContext'
-import { getDashboardProfe } from '../../lib/supabase'
+import { useAuth } from 'contexts/AuthContext'
+import { getDashboardProfe } from 'lib/supabase'
 import { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts'
 import { format, subDays, parseISO } from 'date-fns'
 import { es } from 'date-fns/locale'

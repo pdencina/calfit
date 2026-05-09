@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { useAuth } from '../../contexts/AuthContext'
-import { signOut, getNotificaciones, marcarLeidasAll } from '../../lib/supabase'
+import { useAuth } from 'contexts/AuthContext'
+import { signOut, getNotificaciones, marcarLeidasAll } from 'lib/supabase'
 import { useEffect } from 'react'
 
 const PROFE_NAV = [
