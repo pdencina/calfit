@@ -17,11 +17,18 @@ export async function signIn(email, password) {
   return data
 }
 
-export async function signUp(email, password, fullName, role = 'alumno') {
+export async function signUp(email, password, fullName, role = 'alumno', academyName = '', academyCode = '') {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
-    options: { data: { full_name: fullName, role } }
+    options: {
+      data: {
+        full_name: fullName,
+        role,
+        academy_name: academyName,
+        academy_code: academyCode?.trim()?.toUpperCase()
+      }
+    }
   })
   if (error) throw error
   return data
@@ -35,11 +42,27 @@ export async function signOut() {
 export async function getProfile(userId) {
   const { data, error } = await supabase
     .from('profiles')
-    .select('*')
+    .select('*, academias(*)')
     .eq('id', userId)
     .single()
   if (error) throw error
   return data
+}
+
+// ── Academia ─────────────────────────────────────────────────
+
+export async function getMiAcademia() {
+  const { data: { user }, error: userError } = await supabase.auth.getUser()
+  if (userError) throw userError
+  if (!user) return null
+
+  const profile = await getProfile(user.id)
+  return profile?.academias || null
+}
+
+export async function getAcademyCode() {
+  const academia = await getMiAcademia()
+  return academia?.academy_code || ''
 }
 
 // ── Rutinas ───────────────────────────────────────────────────
@@ -69,9 +92,16 @@ export async function getAllAlumnos() {
 }
 
 export async function createRutina(alumnoId, profeId, nombre, descripcion = '') {
+  const profile = await getProfile(profeId)
   const { data, error } = await supabase
     .from('rutinas')
-    .insert({ alumno_id: alumnoId, profe_id: profeId, nombre, descripcion })
+    .insert({
+      academia_id: profile.academia_id,
+      alumno_id: alumnoId,
+      profe_id: profeId,
+      nombre,
+      descripcion
+    })
     .select()
     .single()
   if (error) throw error
@@ -132,9 +162,16 @@ export async function reorderEjercicios(ejercicios) {
 // ── Sesiones ──────────────────────────────────────────────────
 
 export async function createSesion(alumnoId, rutinaId) {
+  const { data: rutina, error: rutinaError } = await supabase
+    .from('rutinas')
+    .select('academia_id')
+    .eq('id', rutinaId)
+    .single()
+  if (rutinaError) throw rutinaError
+
   const { data, error } = await supabase
     .from('sesiones')
-    .insert({ alumno_id: alumnoId, rutina_id: rutinaId })
+    .insert({ alumno_id: alumnoId, rutina_id: rutinaId, academia_id: rutina.academia_id })
     .select()
     .single()
   if (error) throw error
@@ -171,7 +208,7 @@ export async function guardarSesionEjercicio(sesionId, ejercicioId, completado, 
       ejercicio_id: ejercicioId,
       completado,
       reps_logradas: repsLogradas
-    })
+    }, { onConflict: 'sesion_id,ejercicio_id' })
     .select()
     .single()
   if (error) throw error
