@@ -1,11 +1,44 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "build",
-  "rewrites": [
-    { "source": "/static/(.*)",  "destination": "/static/$1" },
-    { "source": "/login",        "destination": "/index.html" },
-    { "source": "/login/(.*)",   "destination": "/index.html" },
-    { "source": "/",             "destination": "/landing.html" },
-    { "source": "/(.*)",         "destination": "/index.html" }
+  "routes": [
+    {
+      "src": "/static/js/(.*)",
+      "dest": "/static/js/$1",
+      "headers": { "cache-control": "public, max-age=31536000, immutable" }
+    },
+    {
+      "src": "/static/css/(.*)",
+      "dest": "/static/css/$1",
+      "headers": { "cache-control": "public, max-age=31536000, immutable" }
+    },
+    {
+      "src": "/static/media/(.*)",
+      "dest": "/static/media/$1"
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/favicon.ico"
+    },
+    {
+      "src": "/manifest.json",
+      "dest": "/manifest.json"
+    },
+    {
+      "src": "/landing.html",
+      "dest": "/landing.html"
+    },
+    {
+      "src": "/login",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/",
+      "dest": "/landing.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
   ]
 }
