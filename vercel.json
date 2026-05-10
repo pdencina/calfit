@@ -2,12 +2,12 @@
   "buildCommand": "npm run build",
   "outputDirectory": "build",
   "routes": [
-    { "src": "/app", "dest": "/index.html" },
-    { "src": "/app/(.*)", "dest": "/index.html" },
-    { "src": "/landing.html", "dest": "/landing.html" },
     { "src": "/static/(.*)", "dest": "/static/$1" },
     { "src": "/favicon.ico", "dest": "/favicon.ico" },
     { "src": "/manifest.json", "dest": "/manifest.json" },
-    { "src": "/", "dest": "/landing.html" }
+    { "src": "/logo(.*)", "dest": "/logo$1" },
+    { "src": "/landing", "dest": "/landing.html" },
+    { "src": "/", "dest": "/landing.html" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
