@@ -1,26 +1,12 @@
 import { useEffect } from 'react'
 
-// La landing se inyecta como HTML puro para preservar todos los estilos y scripts
-// sin conflictos con el CSS de React
-
 export default function LandingPage() {
   useEffect(() => {
-    // Cargar la landing.html como documento completo
-    fetch('/landing.html')
-      .then(r => r.text())
-      .then(html => {
-        // Reemplazar el documento completo
-        document.open()
-        document.write(html)
-        document.close()
-      })
-      .catch(() => {
-        // Fallback inline si no carga
-        window.location.href = '/login'
-      })
+    // Redirect to the static landing.html file directly
+    // This file exists in public/ and gets copied to build/ by React
+    window.location.replace('/landing.html')
   }, [])
 
-  // Mostrar loading mientras carga
   return (
     <div style={{
       minHeight: '100vh',
