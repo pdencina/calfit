@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useAuth } from 'contexts/AuthContext'
+import TrialBanner from 'components/ui/TrialBanner'
+import BienvenidaProfe from 'pages/profe/BienvenidaProfe'
 import { getDashboardProfe } from 'lib/supabase'
 import { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts'
 import { format, subDays, parseISO } from 'date-fns'
@@ -64,6 +66,7 @@ export default function DashboardProfe({ setPage }) {
         </div>
       )}
 
+      <TrialBanner setPage={setPage}/>
       <div className="page-title">DASHBOARD</div>
       <div className="page-sub">
         {format(new Date(), "EEEE d 'de' MMMM, yyyy", {locale:es}).replace(/^\w/, c => c.toUpperCase())}
