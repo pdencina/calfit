@@ -22,7 +22,7 @@ import PlatformAdminDashboard from 'pages/admin/PlatformAdminDashboard'
 
 function AppRouter() {
   const { user, profile, loading } = useAuth()
-  const [page, setPage] = useState('dashboard')
+  const [page, setPage]           = useState('dashboard')
   const [selectedAlumno, setSelectedAlumno] = useState(null)
 
   if (loading) return (
@@ -33,7 +33,7 @@ function AppRouter() {
     </div>
   )
 
-  // No logueado → login
+  // No logueado → Login directo
   if (!user || !profile) return <LoginPage/>
 
   // Admin de plataforma
