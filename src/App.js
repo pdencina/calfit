@@ -25,6 +25,7 @@ import MensajesPage   from 'pages/MensajesPage'
 import PlanesPage     from 'pages/PlanesPage'
 import ConfigPage     from 'pages/ConfigPage'
 import AdminPage      from 'pages/profe/AdminPage'
+import PlatformAdminDashboard from 'pages/admin/PlatformAdminDashboard'
 
 function AppRouter() {
   const { user, profile, loading } = useAuth()
@@ -42,6 +43,9 @@ function AppRouter() {
   )
 
   if(!user || !profile) return <LoginPage/>
+
+  // Superadmin — vista global de la plataforma
+  if(profile.role === 'admin') return <PlatformAdminDashboard/>
 
   const isProfe = profile.role === 'profe'
 
