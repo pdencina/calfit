@@ -2,9 +2,10 @@
   "buildCommand": "npm run build",
   "outputDirectory": "build",
   "rewrites": [
-    { "source": "/login",    "destination": "/index.html" },
-    { "source": "/login/(.*)", "destination": "/index.html" },
-    { "source": "/",         "destination": "/landing.html" },
-    { "source": "/(.*)",     "destination": "/index.html" }
+    { "source": "/static/(.*)",  "destination": "/static/$1" },
+    { "source": "/login",        "destination": "/index.html" },
+    { "source": "/login/(.*)",   "destination": "/index.html" },
+    { "source": "/",             "destination": "/landing.html" },
+    { "source": "/(.*)",         "destination": "/index.html" }
   ]
 }
